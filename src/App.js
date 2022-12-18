@@ -1,10 +1,17 @@
 import './Style.css';
 import ToDo from './components/ToDo';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-function App() {
+const App = () => {
+
   return (
     <div className="App">
-      <ToDo />
+      <Navbar />
+      <div className="todo">
+        <ToDo />
+      </div>
+      <Footer />
     </div>
   );
 }

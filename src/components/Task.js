@@ -1,31 +1,38 @@
-import React from 'react'
-
-const Task = ({ filteredTask, tasks, setTasks }) => {
+import React from 'react';
 
 
-  const changeStatusHandler = e => {
-    console.log("called", filteredTask.status)
+const Task = ({ filteredTask, tasks, setTasks, updateTaskDB, deleteTaskDB }) => {
+
+  // handling task when its status changes
+  const changeStatusHandler = async (e) => {
+    // adding style on status change
     if (filteredTask.status.toLowerCase() === "pending") e.target.parentNode.parentNode.classList.add("completed");
     else if (filteredTask.status.toLowerCase() === "completed") e.target.parentNode.parentNode.classList.remove("completed");
 
-    setTasks(tasks.map(task => {
-      if (task.id === filteredTask.id) {
-        return {
-          ...filteredTask,
-          status: filteredTask.status==="Pending" ? "Completed" : "Pending"
-        }
-      } else return task;
-    })
-  )}
+    // updating tasks state and also reflecting in DB
+    updateTaskDB(filteredTask);
+    // setTasks(tasks.map(task => {
+    //   if (task.id === filteredTask.id) {
+    //     return {
+    //       ...filteredTask,
+    //       status: filteredTask.status==="Pending" ? "Completed" : "Pending"
+    //     }
+    //   } else return task;
+    // }));
+  }
 
-  const deleteTaskHandler = () => setTasks(tasks.filter(task => task.id !== filteredTask.id))
+  // removing task
+  const deleteTaskHandler = () => {
+    deleteTaskDB(filteredTask);
+    // setTasks(tasks.filter(task => task.id !== filteredTask.id));
+  }
 
   return (
     <div className={`task-list--item ${filteredTask.status === 'Completed' ? "completed" : ""}`}>
       {
         filteredTask &&
         <>
-          <div className="padding-5px"><ion-icon name="caret-forward-outline"></ion-icon></div>
+          <div className="padding-5px color-red"><ion-icon name="caret-forward-outline"></ion-icon></div>
           <div className="text padding-5px"> {filteredTask.task} </div>
           <div className="action-btn padding-5px">
             {

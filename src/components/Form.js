@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import '../Style.css';
 
-const Form = ({ tasks, setTasks, setFilter, updateFilteredTasks }) => {
+const Form = ({ tasks, setTasks, setFilter, updateFilteredTasks, addTaskDB }) => {
 
     // addding new state
     const [inputText, setInputText] = useState("");
 
     // FUNCTION TO ADD NEW TASK AND UPDATE STATE
     const formSubmitHandler = () => {
-        setTasks([
-            ...tasks,
-            {
-                id: parseInt(Math.random()*10000000),
-                task: inputText,
-                status: "Pending"
-            }
-        ]);
+        if (inputText === '') {
+            alert("Kindly add a valid task")
+            return
+        }
+
+        const newTask = {
+            id: parseInt(Math.random()*10000000),
+            task: inputText,
+            status: "Pending"
+        }
+        addTaskDB(newTask);
+        // setTasks([
+        //     ...tasks,
+        //     newTask
+        // ]);
         setInputText("");
     }
 
@@ -29,7 +36,7 @@ const Form = ({ tasks, setTasks, setFilter, updateFilteredTasks }) => {
     }
 
     return (
-        <div>
+        <div className="container">
             <header className="header">Add New Tasks</header>
             <div className="form--div">
                 <form className="form-input">
@@ -40,15 +47,20 @@ const Form = ({ tasks, setTasks, setFilter, updateFilteredTasks }) => {
                         onChange={inputTextHandler}
                         placeholder="Enter new Task here"
                     />
-                    <div className="form-input--submit" onClick={formSubmitHandler}><ion-icon name="add-outline"></ion-icon> </div>
+                    <button type="submit" className="form-input--submit" onClick={formSubmitHandler}>
+                        <div>+</div>
+                    </button>
+                    {/* <div className="form-input--submit" onClick={formSubmitHandler}><ion-icon name="add-outline"></ion-icon> </div> */}
                 </form>
 
                 <form className="form-filter">
-                    <select className="form-filter--task" onChange={filterSelectHandler}>
-                    <option value="All"> All </option>
-                    <option value="Pending"> Pending </option>
-                    <option value="Completed"> Completed </option>
-                    </select>
+                    <div className="form-filter--relative">
+                        <select className="form-filter--type" onChange={filterSelectHandler}>
+                            <option value="All"> All </option>
+                            <option value="Pending"> Pending </option>
+                            <option value="Completed"> Completed </option>
+                        </select>
+                    </div>
                 </form>
             </div>
         </div>

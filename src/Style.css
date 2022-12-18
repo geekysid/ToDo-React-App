@@ -11,11 +11,75 @@
     font-size: .9rem;
 }
 
+.navbar {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #334756;
+    font-size: .8rem;
+}
+.navbar--header {
+    flex:1;
+    text-align: left;
+    margin-left: 1.5rem;
+    font-weight: 700;
+}
+.navbar--login {
+    flex:1;
+    text-align: center;
+    font-weight: 500;
+    font-size: .8rem;
+    color: #082032;
+}
+.navbar--project-name {
+    flex:1;
+    text-align: right;
+    margin-right: 1.5rem;
+    font-size: .7rem;
+    font-weight: 600;
+}
+
+.footer {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #334756;
+    font-size: .7rem;
+}
+.footer-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-icon-span {
+    padding: 5px;
+}
+.footer-icon-span:hover {
+    color: #FF4C29;
+}
+.footer-icon-separator{
+    color: #FF4C29;
+
+}
+
+.todo {
+    min-height: calc(100vh - 40px - 35px);
+}
+
 .container {
     width:50vh;
     max-width: 600px;
     min-width: 500px;
-    margin-top: 10vh;
+    margin-top: 5vh;
     background-color: #2C394B;
     border-radius: 10px;
     box-shadow: 0 3px 10px 0 rgb(0 0 0 /0.5);
@@ -23,6 +87,10 @@
 
 ion-icon {
     font-size: 18px;
+}
+
+ion-icon-8 {
+    font-size: 8px;
 }
 
 .header {
@@ -33,56 +101,99 @@ ion-icon {
 
 .form--div{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 20vh;
 }
 .form-input {
     display: flex;
-    flex-direction: row;
     align-items: center;
     margin: 1rem;
     padding: 0.5rem;
     flex-wrap: wrap;
+    font-size: .9rem;
 }
 .form-input--task {
-    height: 1.5rem;
-    padding-left: 2px;
+    padding: 4px 8px;
+    /* padding: 3px 10px 3px 10px; */
     border-radius: 6px 0 0 6px;
-    border: 1px solid #FF4C29;
-    border-left: 0;
+    border: none;
 }
 .form-input--submit {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 0px 6px 6px 0;
+    border: none;
+    color: white;
+    font-weight: 700;
+    background-color: #FF4C29;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    /* display: flex;
     padding: 2px;
     background-color: #FF4C29;
-    border: 1px solid #FF4C29;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.5s;
     border-radius: 0 6px 6px 0;
-    border-left: 0;
+    border-left: 0; */
+
 }
 .form-input--submit:hover {
     background-color: white;
     color: #FF4C29;
-    border: 1px solid #FF4C29;
-    border-left: 0
+    /* border: 1px solid #FF4C29; */
 }
 
 .form-filter {
+    display: flex;
+    align-items: center;
     margin: 1rem;
     padding: 0.5rem;
-    height: 1.5rem;
- }
+}
+.form-filter--relative {
+    position: relative;
+    overflow: hidden;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none;
+}
+.form-filter--type {
+    padding: 4px 8px;
+}
+select {
+    /* color: #FF4C29; */
+    cursor: pointer;
+    width: 10rem;
+    border-radius: 6px;
+}
+.form-filter--relative::after {
+    content: "\25BC";
+    padding: 4px 8px;
+    font-size: .8rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #FF4C29;
+    cursor: pointer;
+    pointer-events: none;
+    border-radius: 0 6px 6px 0;
+}
 
 .task-list {
     margin-top: 1rem;
 }
 
-.task-list--div{
-    
-}
 .task-list--list{
     display: flex;
     flex-direction: column;
@@ -100,6 +211,9 @@ ion-icon {
 .padding-5px {
     padding: 5px;
 }
+.color-red {
+    color: red;
+}
 .text {
     flex: 1;
     text-align: left;
@@ -115,4 +229,8 @@ ion-icon {
 .action-btn:hover {
     color: #FF4C29;
     scale: 1.1;
+}
+
+.margin-bottom-3r {
+    margin-bottom: 3rem;
 }
