@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../Style.css';
+import Card from './Card';
 
 const Form = ({ tasks, setTasks, setFilter, updateFilteredTasks, addTaskDB }) => {
 
@@ -36,8 +37,7 @@ const Form = ({ tasks, setTasks, setFilter, updateFilteredTasks, addTaskDB }) =>
     }
 
     return (
-        <div className="container">
-            <header className="header">Add New Tasks</header>
+        <Card header="Add New Tasks">
             <div className="form--div">
                 <form className="form-input">
                     <input
@@ -63,8 +63,7 @@ const Form = ({ tasks, setTasks, setFilter, updateFilteredTasks, addTaskDB }) =>
                     </div>
                 </form>
             </div>
-        </div>
-
+        </Card>
     )
 }
 
